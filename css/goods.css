@@ -1,0 +1,464 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#page-down{
+    position: fixed;
+    width: 84%;
+    margin-left: 260px;
+    margin-top: 60px;
+    height: 1px;
+    z-index: 444444;
+    background-color:gainsboro;
+}
+#page-up{
+    position: fixed;
+    margin-top: 0px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    cursor: pointer;
+}
+#page-up #name{
+    width: 16%;
+    float: left;
+    height: 60px;
+    font-size: 26px;
+}
+#page-up #name p{
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 12px;
+}
+#page-up #up-more{
+    position: fixed;
+    min-width: 1500px;
+    top: 0px;
+    left: 260px;
+    width: 83%;
+
+}
+#page-up #up-more #text-title{
+    width: 55%;
+    margin-left: 0px;
+    height: 40px;
+    color: gainsboro;
+}
+
+#page-up #up-more #text-title #title{
+    padding-left: 30px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#page-up #up-more #text-title #title  li{
+    float: left;
+    margin: 0 5px;
+    list-style: none;
+    width: 80px;
+}
+#page-up #up-more #other{
+    z-index: 66666666;
+    position: absolute;
+    top: 0px;
+    left:45%;
+    width: 48%;
+    height: 80px;
+}
+ #page-up #up-more #other div{
+    width: 200px;
+     height: 60px;
+    display: inline-block;
+    cursor: pointer;
+}
+ #page-up #up-more  #other #username .welcome{
+    margin-top: 20px;
+}
+ #page-up #up-more #other #data #time{
+    position: relative;
+   top: 3px;
+}
+ #page-up #up-more #other #username p{
+   vertical-align:middle;
+}
+ #page-up #up-more #other #tools img{
+    padding-left: 60px;
+    margin: 0 -5px;
+}
+
+
+/*侧边栏*/  #slider{
+               padding: 0;
+               position: fixed;
+              margin-top: 20px;
+              width: 260px;
+            height: 100%;
+            background-color: #272a38;
+             cursor: pointer;
+        } 
+        #slider  div{
+              background-color: #272a38;
+            height: 60px;
+            color: white;
+            margin: 0px 0px;
+            padding-left: 20px;
+        }
+        #slider .personslist:hover{
+            background-color:rgb(48, 65, 86) ;
+        }
+        #slider  .personlist:hover{
+            background-color:rgb(48, 65, 86);
+        }
+        #slider.goodslist:hover{
+            background-color:rgb(48, 65, 86) ;
+        }
+        #slider  .shoplist:hover{
+            background-color:rgb(48, 65, 86) ;
+        }
+        #slider  .managerlist:hover{
+            background-color:rgb(48, 65, 86) ;
+        }
+        #slider div ul li{
+            list-style: none;
+            font-size: 18px;
+            line-height: 24px;
+            margin: 5px auto;
+        }
+         #slider div ul{
+             height: 120px;
+         }
+         #slider div ul li p{
+             position: relative;
+             top: -8px;
+             padding-top: 20px;
+             margin-left: 70px;
+             margin-top: -10px;
+         }
+                  #slider #goods-list ul li:hover{
+                       background-color:rgb(40, 15, 60); 
+                  }
+        
+           #slider  #goods-list{
+             margin-left: -20px;
+             display: none;
+             height: 0px;
+         }
+         #slider div p{
+            padding-top: 20px;
+            margin-left: 0px;
+           color:#fff;
+           font-size:18px;
+        }
+        
+         #slider div img{
+            position: relative;
+            top: 4px;
+        }      
+#contain{
+    position:fixed;
+    min-width: 600px;
+    background-color:white;
+    margin-left: 260px;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 44444;
+}
+#contain #contain-down #contain-contain div{
+    width: 100%;
+    height: 80px;
+    margin: 20px auto;
+    background-color: white;
+}
+#contain #contain-up #search input{
+    border: 2px solid black;
+    opacity: 0.4;
+}
+#contain #contain-up #search input:hover{
+    border: 2px solid skyblue;
+    opacity: 1.0;
+}
+
+
+
+
+#contain #contain-down #contain-contain{
+    border: 3px solid gainsboro;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    margin-top: 0px;
+    margin-left: 10px;
+    background-color: gainsboro;
+    width: 82%;
+    height: 65%;
+    z-index: 4444444;
+}
+#contain #contain-down #contain-end{
+    min-width: 1500px;
+    background-color: white;
+     position: fixed;
+    top: 90%;
+    margin-left: 10px;
+    width: 100%;
+    height: 200px;
+    z-index: 44444444;
+}
+#contain #contain-down #contain-end #page{
+    margin-top: 20px;
+    z-index: 666666666;
+    width: 60%;
+    margin-left: 45%;
+    font-size: 16px;
+}
+#contain #contain-down #contain-end #page button{
+    margin: 0px 2px;
+    border: 1px solid skyblue;
+}
+
+
+
+
+
+
+#contain #contain-up #add-btn{
+    margin-left: 50px;
+    color: #1890ff;
+    margin-top: 10px;
+    background: #e8f4ff;
+    border: 1px solid  #a3d3ff;
+    font-size: 16px;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#contain #contain-up #add-btn img{
+    margin-top: 8px;
+    margin-left: 15px;
+}
+#contain #contain-up #add-btn p{
+    position: absolute;
+    top: 16px;
+    left: 85px;
+}
+#contain #contain-up #search{
+    margin-top: -25px;
+    margin-left: 15%;
+    width: 40%;
+    height: 40px;
+    font-size: 16px;
+}
+#contain #contain-up #search div{
+    display: inline-block;
+}
+
+#contain #contain-up #search  #btn-search{
+    position: absolute;
+    top: 5px;
+    left: 78%;
+}
+#contain #contain-up #search #search-input form{
+    position: fixed;
+    width: 300px;
+    margin-left: 100px;
+    margin-top: -25px;
+}
+#contain #contain-down {
+    cursor: pointer;
+}
+#contain #contain-down #containdown-nav{
+    width: 84%;
+    height: 50px;
+
+}
+#contain #contain-down #containdown-nav ul{
+    width: 100%;
+    margin-left: 20px;
+}
+#contain #contain-down #containdown-nav ul li{
+    width: 9%;
+    height: 40px;
+    float: left;
+    margin: 0 13px;
+}
+       
+
+
+
+
+ /* 首页
+ #firstPage{
+    margin-top: -658px;
+    margin-left: 16%;
+    width: 84%;
+    height: 458px;
+    z-index: 20;
+    background-color:white ;
+    cursor: pointer;
+    display: block;
+}  */
+/*个人信息展示*/
+#person-hidden{
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 16%;
+    width: 84%;
+    height: 100%;
+    z-index: 444444;
+    background-color:white;
+    cursor: pointer;
+}
+#person-hidden #person-message{
+    box-shadow: 0 5px 10px 5px rgb(22 81 163 / 13%);
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 400px;
+    height: 480px;
+    background-color: white;
+}
+#person-hidden #person-message p{
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+#person-hidden #person-message ul li{
+    height: 20px;
+    margin: 20px auto;
+}
+
+#person-hidden #person-message ul {
+    margin-left: 20px;
+}
+#person-hidden #person-message ul div{
+    width: 350px;
+    height: 1px;
+    background-color: gainsboro;
+    position: relative;
+    margin-top: 5px;
+}
+#person-hidden #basic-message{
+    box-shadow: 0 5px 10px 5px rgb(22 81 163 / 13%);
+    margin-top: -480px;
+    margin-left: 500px;
+    width: 740px;
+    height: 440px;
+    background-color: white;
+}
+#person-hidden #basic-message #all{
+    position: absolute;
+    margin-top: 0px;
+}
+#person-hidden #basic-message p{
+     float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+#person-hidden #basic-message #basictext-message{
+    margin-top: 20px;
+    margin-left: 40px;
+}
+#person-hidden #basic-message #basictext-message p{
+   width: 500px;
+   height: 50px;
+   margin-left: 40px;
+   word-wrap: break-word;
+   word-break: break-all;
+   font-size: 20px;
+}
+#person-hidden #basic-message #goout-hidden p{
+     width: 500px;
+   height: 50px;
+   margin-left: 40px;
+   word-wrap: break-word;
+   word-break: break-all;
+   font-size: 20px;
+}
+
+
+#person-hidden #basic-message  #goout-hidden .input input{
+    height: 25px;
+    width: 350px;
+    border: 1px solid gainsboro;
+    outline: none;
+    text-indent:5px;
+}
+#person-hidden #basic-message #goout-hidden .btn button{
+    height: 35px;
+    width: 60px;
+    margin: 20px 40px;
+}
+
+
+#person-hidden #basic-message #basictext-message  .input input{
+    height: 25px;
+    width: 350px;
+    border: 1px solid gainsboro;
+    outline: none;
+    text-indent:5px;
+}
+#person-hidden #basic-message #basictext-message .btn button{
+    height: 35px;
+    width: 60px;
+    margin: 20px 40px;
+}
+
+
+#person-hidden #basic-message #basic-text #textmessage{
+    margin-top:60px;
+    width: 300px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+}
+#person-hidden #basic-message #basic-text #textpwd{
+    margin-top:60px;
+    width: 300px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+}
+#person-hidden #basic-message #basic-text #textmessage div{
+     position: relative;
+    top: 15px;
+    left: -76px;
+    display: inline-block;
+    height: 2px;
+    width: 60px;
+    background-color: gainsboro;
+}
+#person-hidden #basic-message #basic-text #textpwd div{
+     position: relative;
+    top: 15px;
+    left: -76px;
+    display: inline-block;
+    height: 2px;
+    width: 60px;
+    background-color: gainsboro;
+}
+/*退出系统的展示*/
+#goout-contain{
+    position: fixed;
+   margin-top: 250px;
+   margin-left: 48%;
+    width: 300px;
+    height: 125px;
+    z-index: 444444;
+    background-color: gainsboro;
+    display: none;
+}
+
+#goout-contain .btn button{
+    margin: 20px 20px;
+    width: 60px;
+    height: 30px;
+}
+#goout-contain .btn {
+    margin-bottom: -20px;
+}
