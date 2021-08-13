@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="A simple slideshow component with individual slide layouts and effects" />
+		<meta name="keywords" content="slideshow, images, layout, asymmetric, css, html, javascript, template" />
+	<title>
+
+	</title>
+	<link href="http://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../../static/home/css/demo.css" /> -->
+		<link rel="stylesheet" type="text/css" href="./css/slideshow.css" />
+		<link rel="stylesheet" type="text/css" href="./css/slideshow_layouts.css" />
+	<link rel="stylesheet" type="text/css" href="./css/default.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/roundStyle.css">
+	<!--引入招新页面的css-->
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/normalize-wel.css">
+	<link rel="stylesheet" type="text/css" href="./css/htmleaf-demo.css">
+	<link rel="stylesheet" type="text/css" href="./css/txt.wav.css">
+
+	<!-- 引入标签页面的css -->
+	<link type="text/css" rel="stylesheet" href="./css/font.css">
+		<!-- <script type="text/javascript" src="../../static/home/js/font.js"></script> -->
+
+	<!--招新方向页面的css-->	
+	<link rel="stylesheet" href="./css/demo-tag.css">
+	<link rel="stylesheet" href="./css/style-tag.css">
+	<!-- 引入活动页面的css -->
+	<link href="https://fonts.googleapis.com/css?family=Kanit:700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/activitynormalize.css" />
+		<link rel="stylesheet" type="text/css" href="./css/activitydemo.css" />
+		<link rel="stylesheet" type="text/css" href="./css/activityrevealer.css" />
+	<script>document.documentElement.className = 'js';</script>
+	<style type="text/css">
+		body{-webkit-text-size-adjust:none;}
+		body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl, dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe{margin:0; padding:0;}
+		/* h1,h2,h3,h4,h5,h6{font-size:100%;} */
+		body,button,input,select,textarea {font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;line-height:1.5;}
+		ol,ul{list-style:none;}
+		
+		html,body{ width:100%; height:100%; overflow:hidden;}
+		.section-wrap{ width:100%;height:100%;overflow:visible;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);}
+		.section-wrap .section{ position:relative; width:100%; height:100%; background-position:center center; background-repeat:no-repeat;}
+		.section-wrap .section .title{width:100%;position:absolute;text-align:center;}
+		.section-wrap .section .title p{ padding:0 4%}
+		.section-wrap .section .title.active .tit{ opacity:1;transform:translateY(-25px);-webkit-transform:translateY(-25px);transition:all 2s cubic-bezier(0.86,0,0.8,1);-webkit-transition:all 2s cubic-bezier(0.86,0,0.8,1);}
+		.section-wrap .section-1{ background-color:#337ab7}
+		/* .section-wrap .section-2{ background-color:#5cb85c} */
+		.section-wrap .section-3{ background-color:#5bc0de}
+		.section-wrap .section-4{ background-color:#1e2021}
+		.section-wrap .section-5{ background-color:#cce5fa}
+		.section-wrap .section-6{ background-color:#ccd8e4}
+        .section-wrap .section-7{ background-color:#7eb6eb}
+		.put-section-0{ transform:translateY(0);-webkit-transform:translateY(0);}
+		.put-section-1{ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+		.put-section-2{ transform:translateY(-200%);-webkit-transform:translateY(-200%);}
+		.put-section-3{ transform:translateY(-300%);-webkit-transform:translateY(-300%);}
+		.put-section-4{ transform:translateY(-400%);-webkit-transform:translateY(-400%);}
+		.put-section-5{ transform:translateY(-500%);-webkit-transform:translateY(-500%);}
+        .put-section-6{ transform:translateY(-600%);-webkit-transform:translateY(-600%);}
+		.put-section-7{ transform:translateY(-700%);-webkit-transform:translateY(-700%);}
+		.section-btn{ width:14px;position:fixed;right:4%;top:50%;}
+		.section-btn li{ width:14px;height:14px;cursor:pointer;text-indent:-9999px;border-radius:50%;-webkit-border-radius:50%;margin-bottom:12px; background:#BD362F;text-align:center; color:#fff; onsor:pointer;}
+		.section-btn li.on{ background:#fff}
+		.arrow{ opacity:1;animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;-webkit-animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;transform:rotate(-90deg);-webkit-transform:rotate(-90deg); position:absolute;bottom:10px;left:50%;margin-left:-30px;width:60px;height:60px;border-radius:100%;-webkit-border-radius:100%;line-height:60px;text-align:center;font-size:20px;color:#fff;border:1px solid #fff;cursor:pointer;overflow:hidden;}
+		.arrow:hover{ animation-play-state:paused;-webkit-animation-play-state:paused;}
+		@keyframes arrow{ %0,%100{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
+		@-webkit-keyframes arrow{ %0,%100{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
+		.tagBall{width:80px;height:80px;margin:50px auto;position:relative;}
+		.tag{display:block;position:absolute;left:0px;top:0px;color:#000;text-decoration:none;font-size:15px;font-family:"微软雅黑";font-weight:bold;}
+		.tag:hover{border:1px solid #666;}
+
+	</style>
+
+
+	<!--[if lte IE 8]>
+	<style type="text/css">
+		html,body{width:100%; height:100%; overflow:scroll}
+		.section-btn{display:none;}
+	</style>
+	<![endif]-->
+	
+		
+		<script type="text/javascript">
+		function Responsive($a) {
+			if ($a == true) $("#Device").css("opacity", "100");
+			if ($a == false) $("#Device").css("opacity", "0");
+			$('#iframe-wrap').removeClass().addClass('full-width');
+			$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+			$(this).addClass('active');
+			return false;
+		};
+		</script>
+		
+	
+</head>
+<body>
+	<section class="section-wrap">
+		<div class="section section-1">
+			<div class="title active" style="height: 100%;">
+				<div id="body" style="height: 100%;">
+					<div id="container" style="height: 100%;">
+					  <img id="image" src="./img/true.png" style="width: 101%;height: 100%;"/>
+					</div>
+					
+					<!-- <h1 style="--x: 6; --y: -6;">
+						<span style="--index: 0; --alpha-l: 0.125; --alpha-u: 0.25;">未</span><span style="--index: 1; --alpha-l: 0.125; --alpha-u: 0.25;">来</span><span style="--index: 2; --alpha-l: 0.125; --alpha-u: 0.25;">招</span><span style="--index: 3; --alpha-l: 0.125; --alpha-u: 0.25;">新</span><span style="--index: 4; --alpha-l: 0.125; --alpha-u: 0.25;">啦</span>
+					</h1> -->
+					<div class="recruit" style="display: none;">
+						<h1 style="--x: 3; --y: -3;">
+							<span style="--index: 0; --alpha-l: 0.25; --alpha-u: 0.5;">未</span><span style="--index: 1; --alpha-l: 0.25; --alpha-u: 0.5;">来</span><span style="--index: 2; --alpha-l: 0.25; --alpha-u: 0.5;">招</span><span style="--index: 3; --alpha-l: 0.25; --alpha-u: 0.5;">新</span><span style="--index: 4; --alpha-l: 0.25; --alpha-u: 0.5;">啦</span>
+						</h1>
+						<h1>
+							<span style="--index: 0; --alpha-l: 0.5; --alpha-u: 1;">未</span><span style="--index: 1; --alpha-l: 0.5; --alpha-u: 1;">来</span><span style="--index: 2; --alpha-l: 0.5; --alpha-u: 1;">招</span><span style="--index: 3; --alpha-l: 0.5; --alpha-u: 1;">新</span><span style="--index: 4; --alpha-l: 0.5; --alpha-u: 1;">啦</span>
+						</h1>
+					</div>
+				  </div>
+				  <!-- <div class="txtwav bounce"><span>欢</span><span>&nbsp;</span><span>迎</span><span>&nbsp;</span><span>你</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>新</span><span>&nbsp;</span><span>同</span><span>&nbsp;</span><span>学</span>
+				  </div> -->
+			</div>
+		</div>
+		<div class="section section-2">
+			<div class="title">
+				<h3 style="color: white;margin-top: 70px;text-shadow: 0px 2px 20px white;">小组简介</h3>
+
+				<div class="showcase">
+					<!-- <small>/* add class: danceWord-s4 */</small> -->
+					<p class="danceWord-s4" style="z-index: 9999; display: block; opacity: 1;">
+						未来软件工作室由高国红，李士勇两位老师于2011年6月创办，以提高学生软件开发技术为核心培养目标，旨在全方位提高学生的就业质量和创新创业能力。工作室成立以来，逐步形成了Web设计开发、大前端设计开发两大学习方向以及JavaWeb、数据处理、移动开发、UI设计等若干细分方向，凝练了成熟的学习路线和培养方案。
+					</p>
+					<p class="danceWord-s4" style="z-index: 9999; display: block; opacity: 1;">
+						一路走来我们成绩斐然，先后获得国家级创新创业项目5项，河南省创业扶持资金项目8项，在各类学科竞赛中获得国家级奖项12项，省级奖项91项，设计开发各类软件产品40余个，培养毕业生50余人，均就职于京东、百度等知名企业，平均就业年薪达20万元以上。
+					</p>
+				</div>
+				<!--小组简介js-->
+		<!-- <script>
+			var danceWordS4 = document.getElementsByClassName('danceWord-s4')
+			var danceWordSpan = danceWordS4.getElementsByTagName('span')
+			span.style.opacity = '1'
+		</script> -->
+
+		
+			</div>
+		</div>
+		<div class="section section-3">
+			<div class="title">
+				<h3 style="color: white;margin-top: 70px;text-shadow: 0px 2px 20px white;">招新方向</h3>
+				<div class="main">
+					<div class="grid">
+						<!-- <div class="block two"><img src="./346.jpg" width="100" height="100" alt="jQuery"></div> -->
+						<div class="block three">php开发</div>
+						<div class="block four">.net开发</div>
+						<div class="block five">yaf开发</div>
+						<div class="block six">前端工程师</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section section-4" style="overflow: hidden;">
+			<div class="title">
+				<main>
+					<div class="slideshow" tabindex="0">
+						<div class="slide slide--layout-1" data-layout="layout1">
+							<div class="slide-imgwrap">
+								<div class="slide__img" style="overflow: hidden;">
+					  <div class="slide__img-inner" style="background-color: white;width: 100%;height: 100%;" >
+						<h4>&nbsp;第十二届蓝桥杯</h4>
+						<table style="width: 100%;text-align: center;line-height: 24px;">
+							<thead>
+								<th>竞赛类型</th>
+								  <th>奖项数量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>省级一等奖</td>
+									<td>8</td>
+								</tr>
+								<tr>
+									<td>省级二等奖</td>
+									<td>13</td>
+								</tr>
+								<tr>
+									<td>省级三等奖</td>
+									<td>10</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>&nbsp;第十一届蓝桥杯</h4>
+						<table style="width: 100%;text-align: center;line-height: 24px;">
+							<thead>
+								<th>竞赛类型</th>
+								  <th>奖项数量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>国家二等奖</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>省级一等奖</td>
+									<td>3</td>
+								</tr>
+								<tr>
+									<td>省级二等奖</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>省级三等奖</td>
+									<td>5</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>&nbsp;第十届蓝桥杯</h4>
+						<table style="width: 100%;text-align: center;line-height: 24px;">
+							<thead>
+								<th>竞赛类型</th>
+								  <th>奖项数量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>国家二等奖</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>国家三等奖</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>省级一等奖</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>省级二等奖</td>
+									<td>17</td>
+								</tr>
+								<tr>
+									<td>省级三等奖</td>
+									<td>23</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>&nbsp;第九届蓝桥杯</h4>
+						<table style="width: 100%;text-align: center;line-height: 24px;">
+							<thead>
+								<th>竞赛类型</th>
+								  <th>奖项数量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>国家一等奖</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>国家二等奖</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>国家三等奖</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>省级一等奖</td>
+									<td>5</td>
+								</tr>
+								<tr>
+									<td>省级二等奖</td>
+									<td>5</td>
+								</tr>
+								<tr>
+									<td>省级三等奖</td>
+									<td>3</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>&nbsp;第八届蓝桥杯</h4>
+						<table style="width: 100%;text-align: center;line-height: 24px;">
+							<thead>
+								<th>竞赛类型</th>
+								  <th>奖项数量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>国家二等奖</td>
+									<td>3</td>
+								</tr>
+								<tr>
+									<td>省级一等奖</td>
+									<td>6</td>
+								</tr>
+								<tr>
+									<td>省级二等奖</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>省级三等奖</td>
+									<td>8</td>
+								</tr>
+							</tbody>
+						</table>
+					  </div>
+					</div>
+								<div class="slide__img" style="overflow: hidden;">
+									<div class="slide__img-inner" style="background-color: white;width: 100%;height: 100%;">
+										<h4>&nbsp;创新创业</h4>
+										<table style="width: 100%;height:65%;text-align: center;line-height: 24px;">
+											<thead>
+												<th>竞赛类型</th>
+												  <th>奖项数量</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>国家级</td>
+													<td>4</td>
+												</tr>
+												<tr>
+													<td>省级</td>
+													<td>17</td>
+												</tr>
+												<tr>
+													<td>校级</td>
+													<td>7</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="slide__img">
+									<div class="slide__img-inner"  style="overflow: hidden;background-color: white;">
+										<h4>&nbsp;软著名单</h4>
+										<table style="width: 100%;height:85%;text-align: center;line-height: 24px;">
+											<thead>
+												<th>著作人</th>
+												  <th>软著名称</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>张顺海</td>
+													<td>嗨抖短视频平台V1.0	</td>
+												</tr>
+												<tr>
+													<td>张顺海、樊世杰、武凯焱、胡帅博</td>
+													<td>就业工作考核数据分析系统V1.0	</td>
+												</tr>
+												<tr>
+													<td>李士勇、侯志松、郝志超、徐康康、张梦鸽、刘阳阳</td>
+													<td>城市管理系统V1.0</td>
+												</tr>
+												<tr>
+													<td>李士勇、高国红、黄佳佳、王志成、陈书梦、刘阳阳</td>
+													<td>蓝牙点名系统V1.0</td>
+												</tr>
+												<tr>
+													<td>刘阳阳、韩健健、张雪、赵硕、刘杜鹃、丁赵雷</td>
+													<td>商品报价服务平台系统V1.0</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">获奖统计</h4>
+								<p class="slide__title-sub">在各个竞赛中小组成员取得了良好的成绩</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-2" data-layout="layout2">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/QQ截图20210428094307.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/QQ截图20210428094317.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/QQ截图20210428094327.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/QQ截图20210428094404.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春5.jpg);"><h4 class="slide__img-caption">Today is someday</h4></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">“创青春”河南省大学生创业大赛</h4>
+								<p class="slide__title-sub">展示河南大学生创新能力与创业素质的综合赛事</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-3" data-layout="layout3">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春1.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春2.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春3.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/one.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春4.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/图1.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/创青春6.jpg);"></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">“创青春”比赛现场</h4>
+								<p class="slide__title-sub">这一段写啥比较好</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-4" data-layout="layout4">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/QQ截图20210428094250.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/ACM集体合影.JPG);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/获奖组ACM合影.JPG);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/小组ACM集体合影.jpg);"></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">ACM竞赛</h4>
+								<p class="slide__title-sub">经过近40年的发展，ACM国际大学生程序设计竞赛已经发展成为全球最具影响力的大学生程序设计竞赛</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-5" data-layout="layout5">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085613.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085721.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085733.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085739.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085807.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085811.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085814.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085821.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085825.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085828.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085831.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085835.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085838.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085842.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085849.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085852.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085856.png);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/TIM图片20190905085859.png);"></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">蓝桥杯大赛</h4>
+								<p class="slide__title-sub">是国内始终领跑的人才培养选拔模式并获得行业深度认可的IT类科技竞赛</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-6" data-layout="layout6">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/新时代新梦想2.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/新时代新梦想1.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(./img/awards/新时代新梦想2.jpg);"></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">“新时代新梦想”创业大赛</h4>
+								<p class="slide__title-sub">广大学生积极投身创新创业实践，敢闯会创，乘风破浪，立足专业</p>
+							</div>
+						</div><!-- /slide -->
+						<div class="slide slide--layout-7" data-layout="layout7">
+							<div class="slide-imgwrap">
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(.户管理系统.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(.控制系统.jpg);"></div></div>
+								<div class="slide__img"><div class="slide__img-inner" style="background-image: url(.考核数据分析系统.jpg);"></div></div>
+							</div>
+							<div class="slide__title">
+								<h4 class="slide__title-main">软著</h4>
+								<p class="slide__title-sub">对于软件作品所享有的发表权、开发者身份权、使用权、使用许可权和获得报酬权各项专有权利</p>
+							</div>
+						</div><!-- /slide -->
+						<!-- <nav class="slideshow__nav slideshow__nav--arrows">
+							<button id="prev-slide" class="btn btn--arrow" aria-label="Previous slide"><svg class="icon icon--prev"><use xlink:href="#icon-prev"></use></svg></button>
+							<button id="next-slide" class="btn btn--arrow" aria-label="Next slide"><svg class="icon icon--next"><use xlink:href="#icon-next"></use></svg></button>
+						</nav> -->
+					</div><!-- /slideshow -->
+					
+				</main>
+			</div>
+		</div>
+		<div class="section section-5">
+			<div class="title" style="height: 100%;">
+				<h3 style="color: white;margin-top: 70px;text-shadow: 0px 2px 20px white;">项目展示</h3>
+				<div class="swiper-container">
+					<ul class="swiper-wrap">
+					    <li>
+						    <img src="./img/project/2C0A9C7AEC2CAA78CB6CBD01A954D833.jpg">
+						    <div class="projectFont">
+								火图网是一个提供： 矢量图、图片素材、网页素材、 ppt、 画册、图标热门主流素材免费下载服务的平台。火图网始终以用户需求为核心，完善的筛选搜索和热门精品素材，方便用户快速找到满意素材。
+							</div>
+					    </li> 
+					    <li>
+						    <img src="./img/project/6A5D88F1BEEFAB9A441B194C5AD00436.jpg">
+						    <div class="projectFont">
+								受河南省郑州市122中学委托，设计开发其对外宣传的官网。通过学校官网使得社会各界人士对该学校有了更加深入的了解，接收社会各界人士的建议，发布学校教职工的招聘信息，提高了学校的知名度。
+							</div>
+					    </li>
+					    <li>
+							<img src="./img/project/8B710EFA09B4D87359E6F58DF1E2C0EE.jpg">
+							<div class="projectFont">
+								作为程序员，我们会经常将自己学到的技术和日常生活感悟分享给大家，所以我们开发了ITAlan博客，广大程序员可以在上面发布博客，分享技术知识。大家也可以在上面寻找自己想要的知识，解决技术上的问题。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/963A881054E65637F5FA928D8C4EE823.jpg">
+							<div class="projectFont">
+								项目简介：首创以歌单作为核心架构，满足你跑步、学习、工作、聚会等各种场景的听歌需求。超清画质的MV、令人震撼的CD音质带给你不一样的视听盛宴。用户互动帮你把音乐的乐趣分享给他人。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/33968A9A87DCB05E77255A1D23ED9161.jpg">
+							<div class="projectFont">
+								受北京华腾知本图书有限公司委托，设计开发了集学校、班级、学生三级管理模式，包含在线测试与组卷等多个功能为一体的综合自主学习与测试系统，为广大在校学生提供一种新的计算机基础知识学习模式。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/A62CDB9DE16245AE509C8CB5C1F2AA28.jpg">
+							<div class="projectFont">
+								受河南科技学院组织部委托，设计开发系统平台，提供对党群机关、行政部门和教学单位的处级干部的年度评价功能，通过相互评价对一个干部的阶段性表现进行综合性评价。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/AC920EB2380CF1A4FE85740F519BADD2.jpg">
+							<div class="projectFont">
+								网文不仅仅是一种娱乐，也是一种文化。未来小说网旨在为广大阅读爱好者提供在线观看书籍，写作以及与作家和读者交流的平台。该网站的用户可以观看书籍、和书友分享心得，以及尽情地展示自己的文采。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/B8B77734CBF0EE400C4F989BAF9B1187.jpg">
+							<div class="projectFont">
+								小金库是一款经营各种商品的网上商城。为的是让消费者购买到自己想要的商品，为用户带来便捷。该商城会出售较为廉价的商品，为消费者带来实惠。同时，商城会显示热销的商品供消费者选择购买。
+							</div>
+						</li> 
+					    <li>
+							<img src="./img/project/E6A245A90689D60E53BDF91BE084C270.jpg">
+							<div class="projectFont">
+								皮皮虾旅游网站是一个服务型平台。是一个满足用户对旅游景点的票务信息、开放时间进行详细了解；对附近酒店的空房情况、消费水平等详细信息进行查询的需求的平台。
+							</div>
+						</li> 
+					</ul>
+					<ul class="swiper-dots" style="display: none;"></ul>
+					<ul class="swiper-navigator" style="display: none;">
+						<li class="swiper-btn-prev">&lt;</li>
+						<li class="swiper-btn-next">&gt;</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="section section-6">
+			<div class="title">
+				<svg class="hidden">
+					<symbol id="icon-arrow" viewBox="0 0 24 24">
+						<title>arrow</title>
+						<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+					</symbol>
+					<symbol id="icon-drop" viewBox="0 0 24 24">
+						<title>drop</title>
+						<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+					</symbol>
+					<symbol id="icon-nav-arrow" viewBox="0 0 24 17">
+						<title>nav arrow</title>
+						<polygon points="14.1333333 2.61666667 18.9333333 7.41666667 0 7.41666667 0 10.0833333 18.9333333 10.0833333 14.1333333 14.8833333 16 16.75 24 8.75 16 0.75"></polygon>
+					</symbol>
+				</svg>
+				<main>
+					<div class="message">We ensure that members are relaxed while learning.</div>
+					<div class="frame">
+						
+						<nav class="demos">
+							<a class="demo demo--current">Relaxing time</a>
+						</nav>
+						
+					</div>
+					<div class="grid grid--layout-1 grid--current">
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item grid__item--nav grid__item--nav-prev">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<div class="grid__item grid__item--nav grid__item--nav-next">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<h2 class="grid__item grid__item--name">dine<br/> together <br/></h2>
+						<h3 class="grid__item grid__item--title">Bright</h3>
+						<p class="grid__item grid__item--text">Life may always have regret, but the future is still good.</p>
+					</div>
+					<div class="grid grid--layout-2">
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item grid__item--nav grid__item--nav-prev">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<div class="grid__item grid__item--nav grid__item--nav-next">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<h2 class="grid__item grid__item--name">climb <br/>together<br/></h2>
+						<h3 class="grid__item grid__item--title">United</h3>
+						<p class="grid__item grid__item--text"> Live a good life meet slowly.</p>
+					</div>
+					<div class="grid grid--layout-3">
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item"></div>
+						<div class="grid__item grid__item--nav grid__item--nav-prev">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<div class="grid__item grid__item--nav grid__item--nav-next">
+							<svg class="icon icon--nav-arrow"><use xlink:href="#icon-nav-arrow"></use></svg>
+						</div>
+						<h2 class="grid__item grid__item--name">Relax <br/> Together <br/></h2>
+						<h3 class="grid__item grid__item--title">Paris</h3>
+						<p class="grid__item grid__item--text">No one and you.</p>
+					</div>
+				</main>
+			</div>
+		</div>
+        <div class="section section-7">
+			<div class="title">
+
+			</div>
+		</div>
+	</section>
+	<ul class="section-btn">
+	  <li class="on"></li>
+	  <li class=""></li>
+	  <li class=""></li>
+	  <li class=""></li>
+	  <li class=""></li>
+	  <li class=""></li>
+      <li class=""></li>
+	</ul>
+	<div class="arrow">&laquo;</div>
+
+
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript">
+	//此处引用：鼠标滚轮mousewheel插件
+	!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)}(function(a){function b(b){var g=b||window.event,h=i.call(arguments,1),j=0,l=0,m=0,n=0,o=0,p=0;if(b=a.event.fix(g),b.type="mousewheel","detail"in g&&(m=-1*g.detail),"wheelDelta"in g&&(m=g.wheelDelta),"wheelDeltaY"in g&&(m=g.wheelDeltaY),"wheelDeltaX"in g&&(l=-1*g.wheelDeltaX),"axis"in g&&g.axis===g.HORIZONTAL_AXIS&&(l=-1*m,m=0),j=0===m?l:m,"deltaY"in g&&(m=-1*g.deltaY,j=m),"deltaX"in g&&(l=g.deltaX,0===m&&(j=-1*l)),0!==m||0!==l){if(1===g.deltaMode){var q=a.data(this,"mousewheel-line-height");j*=q,m*=q,l*=q}else if(2===g.deltaMode){var r=a.data(this,"mousewheel-page-height");j*=r,m*=r,l*=r}if(n=Math.max(Math.abs(m),Math.abs(l)),(!f||f>n)&&(f=n,d(g,n)&&(f/=40)),d(g,n)&&(j/=40,l/=40,m/=40),j=Math[j>=1?"floor":"ceil"](j/f),l=Math[l>=1?"floor":"ceil"](l/f),m=Math[m>=1?"floor":"ceil"](m/f),k.settings.normalizeOffset&&this.getBoundingClientRect){var s=this.getBoundingClientRect();o=b.clientX-s.left,p=b.clientY-s.top}return b.deltaX=l,b.deltaY=m,b.deltaFactor=f,b.offsetX=o,b.offsetY=p,b.deltaMode=0,h.unshift(b,j,l,m),e&&clearTimeout(e),e=setTimeout(c,200),(a.event.dispatch||a.event.handle).apply(this,h)}}function c(){f=null}function d(a,b){return k.settings.adjustOldDeltas&&"mousewheel"===a.type&&b%120===0}var e,f,g=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],h="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],i=Array.prototype.slice;if(a.event.fixHooks)for(var j=g.length;j;)a.event.fixHooks[g[--j]]=a.event.mouseHooks;var k=a.event.special.mousewheel={version:"3.1.12",setup:function(){if(this.addEventListener)for(var c=h.length;c;)this.addEventListener(h[--c],b,!1);else this.onmousewheel=b;a.data(this,"mousewheel-line-height",k.getLineHeight(this)),a.data(this,"mousewheel-page-height",k.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var c=h.length;c;)this.removeEventListener(h[--c],b,!1);else this.onmousewheel=null;a.removeData(this,"mousewheel-line-height"),a.removeData(this,"mousewheel-page-height")},getLineHeight:function(b){var c=a(b),d=c["offsetParent"in a.fn?"offsetParent":"parent"]();return d.length||(d=a("body")),parseInt(d.css("fontSize"),10)||parseInt(c.css("fontSize"),10)||16},getPageHeight:function(b){return a(b).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};a.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})});
+	
+	$(function(){
+		var i=0;
+		var $btn = $('.section-btn li'),
+			$wrap = $('.section-wrap'),
+			$arrow = $('.arrow');
+		
+		/*当前页面赋值*/
+		function up(){i--;if(i==0){i=$btn.length};}
+		function down(){i++;if(i==$btn.length){i=0};}
+		
+		/*页面滑动*/
+		function run(){
+			console.log("run");
+			$btn.eq(i).addClass('on').siblings().removeClass('on');	
+			$wrap.attr("class","section-wrap").addClass(function() { return "put-section-"+i; }).find('.section').eq(i).find('.title').addClass('active');
+		};
+		
+		/*右侧按钮点击*/
+		$btn.each(function(index) {
+			$(this).click(function(){
+				i=index;
+				run();
+			})
+		});
+		
+		/*翻页按钮点击*/
+		$arrow.one('click',go);
+		function go(){
+			up();run();	
+			setTimeout(function(){$arrow.one('click',go)},1000)
+		};
+		
+		/*响应鼠标*/
+		$wrap.one('mousewheel',mouse_);
+		function mouse_(event){
+			if(event.deltaY>0) {
+				console.log("up"+i);
+				up()
+			}else{
+				down()
+				console.log("down"+i);
+			}
+			run();
+			setTimeout(function(){$wrap.one('mousewheel',mouse_)},1000)
+		};
+		
+		/*响应键盘上下键*/
+		$(document).one('keydown',k);
+		function k(event){
+			var e=event||window.event;
+			var key=e.keyCode||e.which||e.charCode;
+			switch(key)	{
+				case 38: down();run();	
+				break;
+				case 40: up();run();	
+				break;
+			};
+			setTimeout(function(){$(document).one('keydown',k)},1000);
+		}
+	});
+</script>
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="./js/jquery.animations-tile.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/jquery.animations.min.js"></script>
+	  <script src="./js/imagesloaded.pkgd.min.js"></script>
+		<script src="./js/anime.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script>
+			//证书展示的轮播图
+		(function() {
+			var slideshow = new MLSlideshow(document.querySelector('.slideshow'));
+			setInterval(() => {
+				slideshow.next()
+			}, 2000);
+			// document.querySelector('#next-slide').addEventListener('click', function() {
+			// 	slideshow.next();
+			// });
+
+			// document.querySelector('#prev-slide').addEventListener('click', function() {
+			// 	slideshow.prev();
+			// });
+		})();
+		</script>
+
+<script src="./js/roundIndex.js"></script>
+		<script>
+			//项目展示的轮播图
+			new Swiper(".swiper-container",{
+				pagination: ".swiper-dots",
+				navigator: {
+					prev: ".swiper-btn-prev",
+					next: ".swiper-btn-next"
+				},
+				delay: 3000, // 切换的时间 默认2000
+				autoPlay: true // 是否自动切换 默认true
+			});
+	</script>
+	<!-- 活动页面的js -->
+	<script src="./js/activityimagesloaded.pkgd.min.js"></script>
+		<script src="./js/activityrevealer.js"></script>
+		<script src="./js/activitydemo.js"></script>
+		<script>
+		{
+			const DOM = {};
+			DOM.body = document.body;
+			DOM.gridElems = Array.from(document.querySelectorAll('.grid'));
+			
+			imagesLoaded(DOM.body, {background: true} , () => {
+				DOM.body.classList.remove('loading');
+				new Slideshow(DOM.gridElems);
+			});
+		}
+		</script>
+
+<script type="text/javascript">
+	//招新方向js
+		$(document).ready(function () {
+			function fixHeight() {
+				var headerHeight = $("#switcher").height();
+				$("#iframe").attr("height", $(window).height()-54+ "px");
+			}
+			$(window).resize(function () {
+				fixHeight();
+			}).resize();
+	
+						$('.icon-monitor').addClass('active');
+			
+			$(".icon-mobile-3").click(function () {
+				$("#by").css("overflow-y", "auto");
+				$('#iframe-wrap').removeClass().addClass('mobile-width-3');
+				$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+	
+			$(".icon-mobile-2").click(function () {
+				$("#by").css("overflow-y", "auto");
+				$('#iframe-wrap').removeClass().addClass('mobile-width-2');
+				$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+	
+			$(".icon-mobile-1").click(function () {
+				$("#by").css("overflow-y", "auto");
+				$('#iframe-wrap').removeClass().addClass('mobile-width');
+				$('.icon-tablet,.icon-mobile,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+	
+			$(".icon-tablet").click(function () {
+				$("#by").css("overflow-y", "auto");
+				$('#iframe-wrap').removeClass().addClass('tablet-width');
+				$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+	
+			$(".icon-monitor").click(function () {
+				$("#by").css("overflow-y", "hidden");
+				$('#iframe-wrap').removeClass().addClass('full-width');
+				$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+				$(this).addClass('active');
+				return false;
+			});
+		});
+	</script>
+
+
+
+
+    <script type="text/javascript">
+	function Responsive($a) {
+		if ($a == true) $("#Device").css("opacity", "100");
+		if ($a == false) $("#Device").css("opacity", "0");
+		$('#iframe-wrap').removeClass().addClass('full-width');
+		$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+		$(this).addClass('active');
+		return false;
+	};
+//未来招新啦延时器
+	var recruit = document.getElementsByClassName('recruit')[0]
+	console.log(recruit);
+	Recruit()
+	function Recruit(){
+		setTimeout(function(){
+			recruit.style.display = 'block'
+		},2500)
+	}
+    </script>
+	<!-- 小组简介的js -->
+ <script type="text/javascript" src="./js/font.js"></script>
+	<script>
+        let box = document.querySelector('body') // 监听对象
+        let startTime = '' // 触摸开始时间
+        let startDistanceX = '' // 触摸开始X轴位置
+        let startDistanceY = '' // 触摸开始Y轴位置
+        let endTime = '' // 触摸结束时间
+        let endDistanceX = '' // 触摸结束X轴位置
+        let endDistanceY = '' // 触摸结束Y轴位置
+        let moveTime = '' // 触摸时间
+        let moveDistanceX = '' // 触摸移动X轴距离
+        let moveDistanceY = '' // 触摸移动Y轴距离
+        box.addEventListener("touchstart", (e) => {
+            startTime = new Date().getTime()
+            startDistanceX = e.touches[0].screenX
+            startDistanceY = e.touches[0].screenY
+        })
+        box.addEventListener("touchend", (e) => {
+            endTime = new Date().getTime()
+            endDistanceX = e.changedTouches[0].screenX
+            endDistanceY = e.changedTouches[0].screenY
+            moveTime = endTime - startTime
+            moveDistanceX = startDistanceX - endDistanceX
+            moveDistanceY = startDistanceY - endDistanceY
+            console.log(moveDistanceX, moveDistanceY)
+            // 判断滑动距离超过40 且 时间小于500毫秒
+            if ((Math.abs(moveDistanceX) > 40 || Math.abs(moveDistanceY) > 40) && moveTime < 500) {
+                // 判断X轴移动的距离是否大于Y轴移动的距离
+                if (Math.abs(moveDistanceX) > Math.abs(moveDistanceY)) {
+                // 左右
+                console.log(moveDistanceX > 0 ? '左' : '右')
+                } else {
+                // 上下
+                console.log(moveDistanceY > 0 ? '上' : '下')
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>
