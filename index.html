@@ -666,8 +666,19 @@
 			$arrow = $('.arrow');
 		
 		/*当前页面赋值*/
-		function up(){i--;if(i==0){i=$btn.length-1};}
-		function down(){i++;if(i==$btn.length){i=0};}
+		function up(){i++;if(i==$btn.length){i=0};
+		console.log(i);
+	}
+		function down(){
+			if(i==0){
+				i=i==$btn.length
+			}else{
+				i--;
+			}
+			
+			
+			
+	console.log(i);}
 		
 		/*页面滑动*/
 		function run(){
@@ -792,9 +803,9 @@
                 // 上下
                 console.log(moveDistanceY > 0 ? '上' : '下')
 					if(moveDistanceY>0){
-						down();
-					}else{
 						up();
+					}else{
+						down();
 					}
 					run();
                 }
