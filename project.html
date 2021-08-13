@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<link rel="stylesheet" href="../../static/home/css/roundStyle.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			overflow: hidden;
+		}
+
+		ul {
+			list-style: none;
+		}
+		@media screen and (max-width: 768px){
+			.swiper-navigator {display: none;}
+		}
+	</style>
+</head>
+<body>
+    <h2 style="color: white;margin-top: 70px;text-shadow: 0px 2px 20px white;text-align: center;">项目展示</h2>
+    <div class="swiper-container">
+        <ul class="swiper-wrap">
+            <li>
+                <img src="../../static/home/img/project/2C0A9C7AEC2CAA78CB6CBD01A954D833.jpg">
+                <div class="projectFont">
+                    火图网是一个提供： 矢量图、图片素材、网页素材、 ppt、 画册、图标热门主流素材免费下载服务的平台。火图网始终以用户需求为核心，完善的筛选搜索和热门精品素材，方便用户快速找到满意素材。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/6A5D88F1BEEFAB9A441B194C5AD00436.jpg">
+                <div class="projectFont">
+                    受河南省郑州市122中学委托，设计开发其对外宣传的官网。通过学校官网使得社会各界人士对该学校有了更加深入的了解，接收社会各界人士的建议，发布学校教职工的招聘信息，提高了学校的知名度。
+                </div>
+            </li>
+            <li>
+                <img src="../../static/home/img/project/8B710EFA09B4D87359E6F58DF1E2C0EE.jpg">
+                <div class="projectFont">
+                    作为程序员，我们会经常将自己学到的技术和日常生活感悟分享给大家，所以我们开发了ITAlan博客，广大程序员可以在上面发布博客，分享技术知识。大家也可以在上面寻找自己想要的知识，解决技术上的问题。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/963A881054E65637F5FA928D8C4EE823.jpg">
+                <div class="projectFont">
+                    项目简介：首创以歌单作为核心架构，满足你跑步、学习、工作、聚会等各种场景的听歌需求。超清画质的MV、令人震撼的CD音质带给你不一样的视听盛宴。用户互动帮你把音乐的乐趣分享给他人。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/33968A9A87DCB05E77255A1D23ED9161.jpg">
+                <div class="projectFont">
+                    受北京华腾知本图书有限公司委托，设计开发了集学校、班级、学生三级管理模式，包含在线测试与组卷等多个功能为一体的综合自主学习与测试系统，为广大在校学生提供一种新的计算机基础知识学习模式。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/A62CDB9DE16245AE509C8CB5C1F2AA28.jpg">
+                <div class="projectFont">
+                    受河南科技学院组织部委托，设计开发系统平台，提供对党群机关、行政部门和教学单位的处级干部的年度评价功能，通过相互评价对一个干部的阶段性表现进行综合性评价。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/AC920EB2380CF1A4FE85740F519BADD2.jpg">
+                <div class="projectFont">
+                    网文不仅仅是一种娱乐，也是一种文化。未来小说网旨在为广大阅读爱好者提供在线观看书籍，写作以及与作家和读者交流的平台。该网站的用户可以观看书籍、和书友分享心得，以及尽情地展示自己的文采。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/B8B77734CBF0EE400C4F989BAF9B1187.jpg">
+                <div class="projectFont">
+                    小金库是一款经营各种商品的网上商城。为的是让消费者购买到自己想要的商品，为用户带来便捷。该商城会出售较为廉价的商品，为消费者带来实惠。同时，商城会显示热销的商品供消费者选择购买。
+                </div>
+            </li> 
+            <li>
+                <img src="../../static/home/img/project/E6A245A90689D60E53BDF91BE084C270.jpg">
+                <div class="projectFont">
+                    皮皮虾旅游网站是一个服务型平台。是一个满足用户对旅游景点的票务信息、开放时间进行详细了解；对附近酒店的空房情况、消费水平等详细信息进行查询的需求的平台。
+                </div>
+            </li> 
+        </ul>
+        <ul class="swiper-dots" style="display: none;"></ul>
+        <ul class="swiper-navigator" style="display: none;">
+            <li class="swiper-btn-prev">&lt;</li>
+            <li class="swiper-btn-next">&gt;</li>
+        </ul>
+    </div>
+    <script src="../../static/home/js/roundIndex.js"></script>
+    <script>
+        //项目展示的轮播图
+        new Swiper(".swiper-container",{
+            pagination: ".swiper-dots",
+            navigator: {
+                prev: ".swiper-btn-prev",
+                next: ".swiper-btn-next"
+            },
+            delay: 3000, // 切换的时间 默认2000
+            autoPlay: true // 是否自动切换 默认true
+        });
+	</script>
+</body>
+</html>
