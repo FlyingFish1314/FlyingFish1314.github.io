@@ -128,8 +128,8 @@
 
 .slide__title-main {
 	font-family: 'nexa_boldregular', serif;
-	font-size: 4em;
-	line-height: 0.8;
+	font-size: 2em !important;
+	line-height: 1;
 	display: inline-block;
 	margin: 0;
 }
@@ -165,7 +165,7 @@
 	}
 	.slide__title {
 		width: calc(100% - 2em);
-		margin: 0 0 4em 0;
+		/* margin: 0 0 4em 0; */
 		padding: 1.5em;
 	}
 	.slide__title-main {

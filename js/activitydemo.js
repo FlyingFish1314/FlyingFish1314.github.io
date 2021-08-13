@@ -96,7 +96,7 @@
 			return this.DOM.el.classList.contains('grid__item--nav');
 		}
 	};
-
+	var ItemArr=[];
 	class Grid {
 		constructor(el, options) {
 			this.CONFIG = {
@@ -109,7 +109,10 @@
 			this.DOM.name = this.DOM.el.querySelector('.grid__item--name');
 			this.DOM.title = this.DOM.el.querySelector('.grid__item--title');
 			this.DOM.text = this.DOM.el.querySelector('.grid__item--text');
+			console.log(this.DOM.name)
 			this.textElems = [this.DOM.name, this.DOM.title, this.DOM.text];
+			ItemArr=this.textElems;
+			console.log(this.textElems)
 			this.layout();
 		}
 		layout() {
@@ -129,7 +132,8 @@
 					promises.push(promise);
 				};
 				for (let i = 0, len = this.textElems.length; i < len; i++) {
-					const promise = this.animateText(this.textElems[i], 'In');
+					console.log(this)
+					const promise = this.animateText(ItemArr[i], 'In');
 					promises.push(promise);
 				};
 				Promise.all(promises).then(() => {
@@ -148,7 +152,8 @@
 					promises.push(promise);
 				};
 				for (let i = 0, len = this.textElems.length; i < len; i++) {
-					const promise = this.animateText(this.textElems[i], 'Out');
+					console.log(this)
+					const promise = this.animateText(ItemArr[i], 'Out');
 					promises.push(promise);
 				};
 				Promise.all(promises).then(() => {
@@ -161,13 +166,14 @@
 		}
 		animateText(el, dir) {
 			return new Promise((resolve, reject) => {
+				console.log(el)
 				el.classList.add(`grid__item--animate${dir}`);
 				el.addEventListener('animationend', resolve);
 			});
 		}
 		resetTextClasses(dir) {
 			for (let i = 0, len = this.textElems.length; i < len; i++) {
-				this.textElems[i].classList.remove(`grid__item--animate${dir}`);
+				ItemArr[i].classList.remove(`grid__item--animate${dir}`);
 			};
 		}
 		hideItems() {
@@ -227,6 +233,7 @@
 			center = {x: win.width/2, y: win.height/2};
 		}
 		navigate(ev, direction) {
+			console.log(ev)
 			if ( this.isAnimating ) {
 				return false;
 			} 
