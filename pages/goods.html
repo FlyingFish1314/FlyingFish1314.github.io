@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品信息管理页面</title>
+    <link rel="stylesheet" href="../css/goods.css" type="text/css" />
+</head>
+
+<body>
+<div style='width: 100%; '>
+    <div id="page-down"></div>
+    <div id="page-up">
+        <div id="name" style="text-align: center;">
+            <!---这是一个回收宝的图标-->
+            <p><b>回收宝后台管理系统</b></p>
+        </div>
+        <div id="up-more" style="position: fixed;">
+            <div id="text-title" style="min-width: 1500px;">
+                <ul id="title">
+                    <li class="firstpage" onclick="showfirstpage()"><b>首页</li></b>
+                    <li class="persons" onclick="showpersons()" ><b>用户管理</li></b>
+                    <li class="person" onclick="showperson()"><b>个人信息</li></b>
+                    <li class="goods" onclick="showgoods()" style="color: black;"><b>商品信息</li></b>
+                    <li class="shop" onclick="showshop()"><b>店铺信息</li></b>
+                    <li class="manager" onclick="showmanager()"><b>管理员信息</li></b>
+
+                </ul>
+
+            </div>
+            <div id="other">
+                <div id="username">
+                    <p class="welcome">您好，<span style="color:orange;" class="user">13939255632</span></p>
+                </div>
+                <div id="data">
+                    <img id="time" src="../img/时 间(1).png" style="width: 20px; height: 20px;">
+                    <span class="year">2021</span>年<span class="month">5</span>月<span class="day">20</span>日
+                    <span class="which"></span>
+                    <!--辛丑年  三月廿五 星期五（能写就写）-->
+                </div>
+                <div id="tools">
+                    <img id="person" src="../img/person.png" onclick="btnperson()" style="width: 20px; height: 20px;">
+                    <img id="goout" src="../img/go out.png" onclick="btngoout()" style="width: 22px; height: 22px;">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="firstpage-contain">
+    <h1>回收宝后台管理系统</h1>
+</div>
+
+
+
+<div id="contain">
+    <div id="contain-up" style="min-width: 1500px;">
+        <div id="add-btn">
+                <img src="../img/新增(1).png" style="width: 15px;height: 15px;">
+            <p>
+                增加
+            </p>
+        </div>
+        <div id="search">
+            <div id="search-input" style="float: left;">
+                <b>搜索关键词：</b>
+                <form>
+                    <div id="search-contain">
+                        <input class="search"
+                            style="height: 25px;  width: 200px; margin-left: 20px;   outline: none; padding:2px 20px;"
+                            type="text" placeholder="请输入查找的关键词">
+                        <button id="btn-search" onclick="searchbtn()"
+                            style="color: white; border: none; position: absolute; top: 2px; right: 1px;   width: 28px; height: 28px; background-color: white;">
+                            <img src="../img/search.png" style="width: 22px;height: 22px;">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="contain-down">
+        <div id="containdown-nav" style="min-width: 1500px;">
+            <ul class="text" style="list-style: none;">
+                <b>
+                    <li>选择</li>
+                    <li>序号</li>
+                    <li>商品名称</li>
+                    <li>商品编号</li>
+                    <li>商品图片</li>
+                    <li>价格</li>
+                    <li>销量</li>
+                    <li>库存</li>
+                    <li>操作</li>
+                </b>
+            </ul>
+        </div>
+
+
+
+        <div id="contain-contain">
+            <div id="containall">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div id="contain-end">
+            <div id="page">
+                共<span class="allitems">666</span>条记录
+                共<span class="allpage">666</span>页
+                当前第<span class="nowpage">666</span>页
+                <button id="backpage" style="width: 60px;height: 30px; background-color: skyblue;">上一页</button>
+                <button style="height: 20px;width: 20px;">1</button>
+                <button style="height: 20px;width: 20px;">2</button>
+                <button style="height: 20px;width: 20px;" class="more">...</button>
+                <button class="allpageb" style="height: 20px;width: 20px;">5</button>
+                <button class="allpagebb" style="height: 20px;width: 20px;">6</button>
+                <button id="nextpage" style="width: 60px;height: 30px; background-color: skyblue;">下一页</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="slider" style=" overflow-y: scroll; ">
+    <div id="firstpage" ">
+            <p><img src=" ../img/首页(1).png" style="width: 20px;  height: 20px;"> <span
+            style="margin-left: 20px;">首页</span> </p>
+    </div>
+    <div class="personslist" >
+        <p><img src="../img/多人(1).png" style="width: 20px; height: 20px;"> <span style="margin-left: 20px;">用户管理</span>
+        </p>
+    </div>
+
+    <div class="personlist">
+        <p><img src="../img/个人(1).png" style="width: 20px; height: 20px;"><span style="margin-left: 20px;">个人信息管理</span>
+        </p>
+    </div>
+   
+
+    <div class="goodslist" style="background-color:rgb(48, 65, 86) ;">
+        <p><img src="../img/商品  (1).png" style="width: 20px; height: 20px;"><span
+                style="margin-left: 20px;">商品信息管理</span></p>
+    </div>
+    <div id="goods-list">
+        <ul>
+        <li>
+            <p>李嘉怡</p>
+        </li>
+        <li>
+            <p>李嘉怡</p>
+        </li>
+        <li>
+            <p>李嘉怡</p>
+        </li>
+        </ul>
+    </div>
+
+    <div class="shoplist">
+        <p><img src="../img/店铺(1).png" style="width: 20px; height: 20px;"><span
+                style="margin-left: 20px;">店铺信息管理</span> </p>
+    </div>
+    
+
+    <!-- <div class="managerlist" onclick="showmanagerlist()">
+        <p><img src="../img/管理员(1).png" style="width: 20px; height: 20px;"><span
+                style="margin-left: 20px;">管理员信息管理</span> </p>
+    </div>
+     -->
+
+    </ul>
+</div>
+
+
+
+
+<div id="person-hidden" style="display: none;">
+    <div id="person-message">
+        <p>个人信息</p>
+        <div style="border-bottom: 1px solid gainsboro; position: relative; top: 50px; "></div>
+        <div id="person-piture">
+            <!--个人信息上传的照片-->
+            <img src="../img/头像.jpg"
+                style=" margin-top: 60px;margin-left: 60px;  width: 100px;height: 100px; border-radius: 60px;">
+        </div>
+        <div style="border-bottom: 1px solid gainsboro; position: relative; top: 10px; "></div>
+        <ul style="list-style: none;">
+            <li>
+                <p><img src="../img/person.png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">用户名称：<input
+                            style="border: none;  height: 30px; width: 220px; outline: none; font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p> <img src="../img/手机(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">手机号码：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p><img src="../img/邮箱(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">邮箱：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p><img src="../img/性别(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">性别：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p><img src="../img/日期(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">创建日期：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p><img src="../img/年龄(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">年龄：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+            <li>
+                <p><img src="../img/角色(1).png" style="height: 20px;width: 20px;"><span
+                        style="margin-left: 20px;">所属角色：<input
+                            style="border: none; height: 30px; width: 220px; outline: none;font-size: 20px;"
+                            type="text"></span></p>
+
+            </li>
+        </ul>
+    </div>
+    <div id="basic-message">
+        <div id="all">
+            <p>基本资料</p>
+            <div style="border-bottom: 1px solid gainsboro; position: relative; top: 50px; "></div>
+            <div id="basic-text">
+                <div id="textmessage" onclick="showmessage()">
+                    基本资料
+                    <div style="background-color: black;" class="textmessagedown  "></div>
+                </div>
+
+                <div id="textpwd" onclick="showpwd()">
+                    修改密码
+                    <div class="textpwddown"></div>
+                </div>
+
+            </div>
+            <div id="basictext-message" style="display: block;">
+                <p class="input"><span style="color: red;">*</span>用户昵称: <input type="text"></p>
+                <p class="input"> <span style="color: red;">*</span>手机号码: <input type="text"></p>
+                <p class="input"> <span style="color: red; margin-left: 40px;">*</span>邮箱: <input
+                        style="margin-left: 0px;" type="text"></p>
+                <p style="margin-left: 92px;"> 性别: <span style="margin-left: 5px;"><input class="man" type="checkbox"> 男
+                        <input class="woman" type="checkbox"> 女</p></span>
+                <p class="btn" style="margin-left: 200px;"> <button class="yeskeep"
+                        style="background-color: lightblue;border: none;">保存</button>
+                    <button class="tofirstpage" onclick="tofirstp()"
+                        style="background-color: lightcoral; border: none;">关闭</button>
+                </p>
+            </div>
+            <div id="goout-hidden" style="display: none;">
+                <p class="input"><span style="color: red;">*</span>旧密码: <input type="text" placeholder="请输入旧密码"></p>
+                <p class="input"> <span style="color: red;">*</span>新密码: <input type="password" placeholder="请输入新密码">
+                </p>
+                <p class="input"> <span style="color: red; margin-left: -20px;">*</span>确认密码: <input
+                        style="margin-left: 0px;" type="password" placeholder="请确认密码"></p>
+                <p class="btn" style="margin-left: 200px;"> <button
+                        style="background-color: lightblue;border: none;">保存</button>
+                    <button class="tofirstpage" onclick="tofirstp()"
+                        style="background-color: lightcoral; border: none;">关闭</button>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div id="goout-contain">
+    <p style="font-size: 20px;height: 20px;"><b>提示</b></p>
+    <p style="height: 30px; margin-top: 20px; text-align: center;">确定注销并退出系统嘛</p>
+    <p class="btn"> <button class="yes" onclick="closehind()" style="margin-left: 80px; ">取消</button><button class="no"
+            onclick="goouthind()" style="background-color: lightskyblue;">确定</button>
+    </p>
+</div>
+</body>
+<script src="../js/goods.js"></script>
+
+</html>
